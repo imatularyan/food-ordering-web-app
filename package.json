@@ -1,0 +1,31 @@
+{
+  "name": "namaste-react-live",
+  "version": "1.0.0",
+  "description": "This is a live course",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imatularyan/Namaste-React.git"
+  },
+  "author": "Atul Aryan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/imatularyan/Namaste-React/issues"
+  },
+  "homepage": "https://github.com/imatularyan/Namaste-React#readme",
+  "devDependencies": {
+    "parcel": "^2.8.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browserslist": [
+    "last 2 Chrome versions"
+  ]
+}

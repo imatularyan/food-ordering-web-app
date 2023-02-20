@@ -1,11 +1,31 @@
-// JavaScript
-// const root = document.getElementById('root');
-// const heading = document.createElement('h1');
-// heading.textContent = 'Hello World';
-// root.appendChild(heading);
+/**
+ * 
+ * Create Server
+ * Hot Module Replacement
+ * File Watcher algorithm - c++
+ * BUNDLING
+ * MINIFY
+ * Cleaning our Code
+ * Dev and Production Build
+ * Super Fast build algorithm
+ * Image Optimization
+ * Caching while development
+ * Compression
+ * Compatable with older version of browsers
+ * HTTPS on dev
+ * Port Number
+ * Consistent Hashing Algorithm
+ * Zero Configuration
+ * 
+ * 
+ * Transitive Dependencies
+ * 
+ */
 
 
-// React
+import React from "react";
+import ReactDOM from "react-dom/client";
+
 // create nested react elements
 const heading = React.createElement('h1', {
     id: 'title'
