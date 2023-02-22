@@ -1,28 +1,22 @@
 import ReactDOM from "react-dom/client";
+import Logo from "./assets/logo.png";
+import User from "./assets/user.svg";
 
-// Functional components
-
-// It won't work because It is a function
-const Heading = () => {
-    return <h1 className='title'>Heading</h1>
-};
-
-const Heading2 = () => {
-    return <h2 className='title'>Heading 2</h2>
-};
-
-const Heading3 = () => {
-    return <h3 className='title'>Heading 3</h3>
-
-};
-
-const Container = () => {
+// functional header component
+const HeaderComponent = () => {
     return (
-    <div className='container'>
-        {Heading}
-        {<Heading2/>}
-        {<Heading3></Heading3>}
-    </div>
+        <div className="header">
+        <div className="logo">
+            <img src={Logo}/>
+        </div>
+        <div className="search-field">
+            <input type="text" className="search-input"></input>
+            <button type="search" className="search-button">Search</button>
+        </div>
+        <div className="icon">
+            <img alt="user" src={User} />
+        </div>
+        </div>
     )
 };
 
@@ -31,4 +25,4 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 // passing react element inside root
 // async defer
-root.render(<Container/>); 
+root.render(<HeaderComponent/>); 
