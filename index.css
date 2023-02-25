@@ -1,43 +1,93 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif
+}
 .header {
     display: flex;
     justify-content: space-evenly;
-    box-shadow: 3px 3px 3px lightslategray;
     align-items: center;
-    height: 75px;
+    box-shadow: 1px 1px 5px lightslategray;
+    height: 70px;
     background-color: whitesmoke;
 }
 .logo > img{
-    width: 100%;
+    width: 90px;
+    transition:ease-in 0.2s;
 }
-.logo {
-    width: 100px;
-}
+
 .logo, .logo > img:hover {
-    cursor: pointer;
+    width: 95px;
 }
-.icon {
-    width: 50px;
+.user-icon{
+    width: 35px;
 }
-.icon > img {
+.user-icon > a > img {
     width: 100%;
 }
-.icon, .icon > img:hover {
-    cursor: pointer;
-}
+
 .search-input {
-    width: 280px;
-    padding: 9px;
+    width: 30px;
+    padding: 9px 37px 9px 9px;
     font-size: large;
-    margin-right: 5px;
-    transition: 0.5s;
     outline: none;
     border: 1px solid gray;
-    border-radius: 2px;
+    border-radius: 4px;
+    transition: 0.5s;
 }
 .search-input:focus {
+    width: 160px;
     border: 1px solid orange;
 }
+
 .search-button {
-    padding: 9px;
+    padding: 7px;
     font-size: medium;
+    border: none;
+    border-radius: 4px;
+    position: relative;
+    left: -35px;
+    top: 2px;
+    background-color: antiquewhite;
+    cursor: pointer;
+}
+
+.nav-items > ul{
+    display: flex;
+    list-style-type: none;
+}
+.nav-items > ul > li{
+    padding: 10px;
+}
+.nav-items > ul > li > a{
+    text-decoration: none;
+    color: #000;
+}
+
+.card {
+    width: 225px;
+    box-shadow: 0px 0px 10px 3px lightgray;
+    padding: 10px;
+    margin: 10px;
+}
+
+.card > img {
+    width: 100%;
+}
+
+.restaurant-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1060px;
+}
+
+.cart-icon {
+    width: 25px;
+}
+
+.cart-icon > a > img {
+    width: 100%;
 }
