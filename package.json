@@ -28,6 +28,6 @@
     "react-dom": "^18.2.0"
   },
   "browserslist": [
-    "last 2 Chrome versions"
+    "last 3 Chrome versions"
   ]
 }

@@ -1,2 +1,2 @@
 # Namaste React Live 🚀
-by Akshay saini 
+by Akshay saini
