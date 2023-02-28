@@ -1,23 +1,23 @@
-import Logo from "../..//assets/logo.png";
-import User from "../..//assets/userIcon.svg";
-import carticon from "../..//assets/cartIcon.svg";
-import searchicon from "../..//assets/searchIcon.svg";
+import Logo from "../assets/img/logo.png";
+import User from "../assets/img/userIcon.svg";
+import carticon from "../assets/img/cartIcon.svg";
+import searchicon from "../assets/img/searchIcon.svg";
 import { useState, useEffect } from "react";
+import {Link} from "react-router-dom";
+
+// SPA - Single Page Application
+// Client Side Routing
 
 function filterData(searchText, restaurants) {
   const filterData = restaurants?.filter((restaurant) =>
-    restaurant?.data?.name?.toLowerCase()?.includes(searchText.toLowerCase()));
+    restaurant?.data?.name?.toLowerCase()?.includes(searchText.toLowerCase())
+  );
   return filterData;
-};
+}
 
 const loggedInUser = () => {
-
   return true;
 };
-
-// const registerUser = () => {
-//   return true;
-// }
 
 const Title = () => (
   <a href="/" className="logo">
@@ -26,10 +26,13 @@ const Title = () => (
 );
 
 // Composing components
-const Header = ({setFilteredRestaurants, setAllRestaurants, allRestaurants}) => {
+const Header = ({
+  setFilteredRestaurants,
+  setAllRestaurants,
+  allRestaurants,
+}) => {
   const [searchText, setSearchText] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [registerUser, setRegisterUser] = useState(true)
 
   useEffect(() => {
     // API call
@@ -37,16 +40,17 @@ const Header = ({setFilteredRestaurants, setAllRestaurants, allRestaurants}) => 
   }, []);
 
   async function getRestaurants() {
-    const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.6674666&lng=73.8896529&page_type=DESKTOP_WEB_LISTING");
+    const response = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.6674666&lng=73.8896529&page_type=DESKTOP_WEB_LISTING"
+    );
     const json = await response.json();
-    console.log(json?.data?.cards[2]?.data?.data?.cards)
+    // optional chaining
     setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
     setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-  }
-
-  console.log("render");
+  };
 
   return (
+    <div className="wrapper">
       <div className="header">
       <Title />
       <div className="search-field">
@@ -61,8 +65,9 @@ const Header = ({setFilteredRestaurants, setAllRestaurants, allRestaurants}) => 
           type="search"
           className="search-button"
           onClick={() => {
-            // filter data
+            // filter the data
             const data = filterData(searchText, allRestaurants);
+            // update the state of the restaurants
             setFilteredRestaurants(data);
           }}
         >
@@ -72,50 +77,49 @@ const Header = ({setFilteredRestaurants, setAllRestaurants, allRestaurants}) => 
       <nav className="nav-items">
         <ul>
           <li>
-            <a href="/Home">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="/About">About</a>
+            <Link to="/About">About</Link>
           </li>
           <li>
-            <a href="/Contact">Contact</a>
-          </li>
-          <li>
-            <a href="/Services">Services</a>
+            <Link to="/Contact">Contact</Link>
           </li>
         </ul>
       </nav>
-      
-      <div className="right-container">
-        <div className="user-icon">
-          <a href="/">
-            <img alt="user" src={User} />
-          </a>
-        </div>
+      <div className="user-container">
+      <div className="user">
         {
-        registerUser && isLoggedIn ?  
-        <button
-        type="button"
-        className="login-btn"
-        onClick={() => setIsLoggedIn(false)}
-      >
-        Log In
-      </button> : <button
-          type="button"
-          className="login-btn"
-          onClick={() => setIsLoggedIn(true)}
-        >
-          Log Out
-        </button>
+          !isLoggedIn ? 
+          <Link to="/user">
+            <img alt="user" src={User} />
+          </Link> : null
         }
-        
-      </div>
-      <div className="cart-icon">
-          <a href="#">
+        {isLoggedIn ? ( <button
+            type="button"
+            className="login-btn"
+            onClick={() => setIsLoggedIn(false)}
+          >
+            Log In
+          </button> ) : (
+          <button
+            type="button"
+            className="login-btn"
+            onClick={() => setIsLoggedIn(true)}
+          >
+            Log Out
+          </button>
+        )}
+        </div>
+        <div className="cart">
+          <Link to="/cart">
             <img alt="cart" src={carticon} />
-          </a>
+            <span>Cart</span>
+          </Link>
         </div>
       </div>
+      </div>
+    </div>
   );
 };
 

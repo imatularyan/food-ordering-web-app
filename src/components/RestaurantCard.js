@@ -1,7 +1,5 @@
 import { IMG_CDN_URL} from "../constants";
 
-
-
 const RestaurantCard = ({name, cloudinaryImageId, cuisines, avgRating, deliveryTime, costForTwoString}) => {
     return (
       <div className="card">
