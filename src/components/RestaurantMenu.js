@@ -54,13 +54,14 @@ const RestaurantMenu = () => {
         </div>
       </div>
       <div className="res-item-wrapper">
-        <div className="menu-title">Menu</div>
+        <div className="menu-title">The Menu</div>
         {Object.values(restaurant?.menu?.items).map((item) => (
           <div className="item" key={item?.id}>
             <div className="res-item-img">
               <img src={IMG_CDN_URL + item?.cloudinaryImageId} />
             </div>
             <div className="res-item-info">
+            <div className="res-isveg">{(item?.isVeg == 1) ? "Veg 🟢" : "Non-Veg 🔴" }</div>
               <div className="res-name">{item?.name}</div>
               <div className="res-desc">{item?.description}</div>
               <div className="res-price">₹{item?.price / 100}</div>

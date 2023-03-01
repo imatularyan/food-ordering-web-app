@@ -11,6 +11,7 @@ import Contact from "./components/Contact";
 import User from "./components/User";
 import Cart from "./components/Cart";
 import RestaurantMenu from "./components/RestaurantMenu";
+import Profile from "./components/Profile";
 
 const AppLayout = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
@@ -39,9 +40,15 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: <About/>,
+        children: [
+          {
+            path: "profile",
+            element: <Profile/>
+          }
+        ]
       },
       {
-        path: "/Contact",
+        path: "/contact",
         element: <Contact/>,
       },
       {
