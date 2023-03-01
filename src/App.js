@@ -21,6 +21,7 @@ const AppLayout = () => {
       <Header allRestaurants={allRestaurants} setAllRestaurants={setAllRestaurants} setFilteredRestaurants={setFilteredRestaurants}/>
       <Routes>
         <Route path="/" element={<Body allRestaurants={allRestaurants} filteredRestaurants={filteredRestaurants}/>}/>
+        <Route element={<RestaurantMenu allRestaurants={allRestaurants} filteredRestaurants={filteredRestaurants}/>}/>
       </Routes>
       <Outlet/>
       <Footer />

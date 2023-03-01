@@ -41,7 +41,7 @@ const Header = ({
 
   async function getRestaurants() {
     const response = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.6674666&lng=73.8896529&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6139391&lng=77.2090212&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await response.json();
     // optional chaining

@@ -6,7 +6,6 @@ import Shimmer from "../components/Shimmer";
 const RestaurantMenu = () => {
   // Read dynamic URL params
   const { resId } = useParams();
-  // Use proper names
   const [restaurant, setRestaurant] = useState(null);
 
   useEffect(() => {
@@ -15,29 +14,63 @@ const RestaurantMenu = () => {
 
   async function getRestaurantsMenu() {
     const response = await fetch(
-      "https://www.swiggy.com/dapi/menu/v4/full?lat=18.6674666&lng=73.8896529&menuId=547228"
+      "https://www.swiggy.com/dapi/menu/v4/full?lat=28.6139391&lng=77.2090212&menuId=" +
+        resId
     );
     const json = await response.json();
-    console.log(json?.data);
+    console.log(json.data);
     setRestaurant(json?.data);
   }
 
-  return (!restaurant) ? <Shimmer/> : (
+  return !restaurant ? (
+    <Shimmer />
+  ) : (
     <div className="menu-container">
-      <div>
-        <h1>Restaurant id: {resId}</h1>
-        <h2>{restaurant.name}</h2>
-        <img alt="resImg" src={IMG_CDN_URL + restaurant.cloudinaryImageId} />
-        <h4>{restaurant.area}</h4>
-        <h4>{restaurant.city}</h4>
-        <h4>⭑ {restaurant.avgRating}</h4>
-        <h4>{restaurant.costForTwoMsg}</h4>
+      <div className="res-wrapper">
+        <div className="res-info">
+          <img alt="resImg" src={IMG_CDN_URL + restaurant?.cloudinaryImageId} />
+          <div className="res-details">
+            <div>
+              <span>Name: </span>
+              {restaurant?.name}
+            </div>
+            <div>
+              <span>Area: </span>
+              {restaurant?.area}
+            </div>
+            <div>
+              <span>City: </span>
+              {restaurant?.city}
+            </div>
+            <div>
+              <span>Rating: </span>
+              {restaurant?.avgRating} stars
+            </div>
+            <div>
+              <span>Price: </span>
+              {restaurant?.costForTwoMsg}
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="menu-items">
-        <h1>Menu</h1>
-        <ul>{Object.values(restaurant?.menu?.items).map((item) => <li key={item.id}>{item.name}</li>)}</ul>
+      <div className="res-item-wrapper">
+        <div className="menu-title">Menu</div>
+        {Object.values(restaurant?.menu?.items).map((item) => (
+          <div className="item" key={item?.id}>
+            <div className="res-item-img">
+              <img src={IMG_CDN_URL + item?.cloudinaryImageId} />
+            </div>
+            <div className="res-item-info">
+              <div className="res-name">{item?.name}</div>
+              <div className="res-desc">{item?.description}</div>
+              <div className="res-price">₹{item?.price / 100}</div>
+            </div>
+          </div>
+        ))}
+        {console.log(Object.values(restaurant?.menu?.items))}
       </div>
     </div>
+    // </div>
   );
 };
 
