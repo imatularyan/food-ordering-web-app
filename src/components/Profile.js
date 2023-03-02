@@ -2,12 +2,23 @@ import {useState, useEffect} from "react";
 
 const Profile = (props) => {
     const [count, setCount] = useState(0)
+
     useEffect(() => {
         // API CALL
-        console.log("useEffect")
-    });
+        const timer =setInterval(() => {
+            console.log("hey");
+        },1000)
 
-    // console.log("render");
+        console.log("useEffect Called")
+
+        return() => {
+            clearInterval(timer);
+            console.log("useEffect return")
+        }
+
+    },[]);
+
+    console.log("render");
     return (
         <div className="about-profile">
             <h1>About Profile</h1>
