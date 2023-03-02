@@ -2,9 +2,17 @@ import React from 'react';
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import {Link} from "react-router-dom";
+import useOnline from "../utils/useOnline";
 
 const Body = ({filteredRestaurants, allRestaurants }) => {
 
+  const isOnline = useOnline();
+  
+  if(!isOnline) {
+    return <h1>🔴 Offline, please check your internet connection!!</h1>
+  }
+
+  // not render component (Early return)
   if(!allRestaurants) return null;
 
  return (allRestaurants?.length === 0) ? <Shimmer/> : (

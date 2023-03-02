@@ -4,16 +4,10 @@ import carticon from "../assets/img/cartIcon.svg";
 import searchicon from "../assets/img/searchIcon.svg";
 import { useState, useEffect } from "react";
 import {Link} from "react-router-dom";
+import { filterData } from "../utils/helper";
 
 // SPA - Single Page Application
 // Client Side Routing
-
-function filterData(searchText, restaurants) {
-  const filterData = restaurants?.filter((restaurant) =>
-    restaurant?.data?.name?.toLowerCase()?.includes(searchText.toLowerCase())
-  );
-  return filterData;
-}
 
 const loggedInUser = () => {
   return true;
@@ -80,10 +74,13 @@ const Header = ({
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/About">About</Link>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <Link to="/Contact">Contact</Link>
+            <Link to="/contact">Contact</Link>
+          </li>
+          <li>
+            <Link to="/instamart">Instamart</Link>
           </li>
         </ul>
       </nav>
