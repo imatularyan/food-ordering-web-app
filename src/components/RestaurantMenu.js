@@ -1,24 +1,20 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { IMG_CDN_URL } from "../constants";
 import Shimmer from "../components/Shimmer";
-import useRestaurant from "../utils/useRestaurant";
+import useRestaurant from "../utils/useRestaurant"
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-
   const restaurant = useRestaurant(resId);
-  console.log(restaurant)
-
 
   return !restaurant ? (
     <Shimmer />
   ) : (
-    <div className="menu-container">
-      <div className="res-wrapper">
-        <div className="res-info">
-          <img alt="resImg" src={IMG_CDN_URL + restaurant?.cloudinaryImageId} />
-          <div className="res-details">
+    <div className=" mt-2">
+      <div className=" sticky top-0 w-full bg-zinc-800">
+        <div className="flex w-3/5 m-auto h-44 text-cyan-50">
+          <img className=" object-contain h-36 m-auto outline outline-1 outline-gray-400" alt="resImg" src={IMG_CDN_URL + restaurant?.cloudinaryImageId} />
+          <div className=" flex m-auto flex-col gap-1 capitalize">
             <div>
               <span>Name: </span>
               {restaurant?.name}
@@ -33,34 +29,32 @@ const RestaurantMenu = () => {
             </div>
             <div>
               <span>Rating: </span>
-              {restaurant?.avgRating} stars
+              {restaurant?.avgRating}★
             </div>
             <div>
-              <span>Price: </span>
-              {restaurant?.costForTwoMsg}
+              <span>Price:</span>
+             <span className="text-yellow-500"> {restaurant?.costForTwoMsg}</span>
             </div>
           </div>
         </div>
       </div>
-      <div className="res-item-wrapper">
-        <div className="menu-title">The Menu</div>
+      <div className=" max-w-7xl m-auto">
+        <div className=" capitalize text-center font-bold text-xl text-zinc-600">The Menu</div>
         {Object.values(restaurant?.menu?.items).map((item) => (
-          <div className="item" key={item?.id}>
-            <div className="res-item-img">
-              <img src={IMG_CDN_URL + item?.cloudinaryImageId} />
+          <div className=" flex w-2/4 my-4 mx-auto pt-5 border-t-2 gap-4" key={item?.id}>
+            <div className=" w-fit h-fit">
+              <img className=" w-40 object-contain max-w-none outline outline-2 outline-zinc-300 rounded-sm" src={IMG_CDN_URL + item?.cloudinaryImageId} />
             </div>
-            <div className="res-item-info">
-            <div className="res-isveg">{(item?.isVeg == 1) ? "Veg 🟢" : "Non-Veg 🔴" }</div>
-              <div className="res-name">{item?.name}</div>
-              <div className="res-desc">{item?.description}</div>
-              <div className="res-price">₹{item?.price / 100}</div>
+            <div className=" flex flex-col flex-auto text-right">
+            <div className="text-xs font-semibold">{(item?.isVeg == 1) ? "Veg 🟢" : "Non-Veg 🔴" }</div>
+              <div className=" text-sm font-semibold">{item?.name}</div>
+              <div className=" text-xs font-medium mt-1 break-words break-all">{item?.description}</div>
+              <div className=" text-base font-semibold text-yellow-600 mt-1"> ₹{item?.price / 100}</div>
             </div>
           </div>
         ))}
-        {console.log(Object.values(restaurant?.menu?.items))}
       </div>
     </div>
-    // </div>
   );
 };
 

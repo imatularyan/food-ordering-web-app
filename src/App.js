@@ -3,15 +3,8 @@ import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
-import { useState } from "react";
 import About from "./components/About";
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Outlet,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import User from "./components/User";
@@ -23,35 +16,9 @@ import Shimmer from "./components/Shimmer";
 const Instamart = lazy(() => import("./components/Instamart"));
 
 const AppLayout = () => {
-  const [allRestaurants, setAllRestaurants] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-
   return (
     <>
-      <Header
-        allRestaurants={allRestaurants}
-        setAllRestaurants={setAllRestaurants}
-        setFilteredRestaurants={setFilteredRestaurants}
-      />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Body
-              allRestaurants={allRestaurants}
-              filteredRestaurants={filteredRestaurants}
-            />
-          }
-        />
-        <Route
-          element={
-            <RestaurantMenu
-              allRestaurants={allRestaurants}
-              filteredRestaurants={filteredRestaurants}
-            />
-          }
-        />
-      </Routes>
+      <Header />
       <Outlet />
       <Footer />
     </>
@@ -64,6 +31,10 @@ const appRouter = createBrowserRouter([
     element: <AppLayout />,
     errorElement: <Error />,
     children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
       {
         path: "/about",
         element: <About />,
@@ -93,7 +64,7 @@ const appRouter = createBrowserRouter([
       {
         path: "/instamart",
         element: (
-          <Suspense fallback={<Shimmer/>}>
+          <Suspense fallback={<Shimmer />}>
             <Instamart />
           </Suspense>
         ),
