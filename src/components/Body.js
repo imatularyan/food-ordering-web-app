@@ -39,41 +39,38 @@ const Body = () => {
       <div className="flex">
         <div className="w-3/5 m-auto mt-2">
           <div className="flex border-2 border-b-slate-600 rounded w-fit">
-          <img
-          className="p-1"
-            alt="searchicon"
-            src={searchicon}
-          />
-          <input
-            type="text"
-            className="text-lg font-light outline-none p-1"
-            placeholder="Search"
-            value={searchText}
-            onChange={(e) => {
-            setSearchText(e.target.value)
-            const data = filterData(searchText, allRestaurants);
-            setFilteredRestaurants(data)
-            }}
-          />
+            <img className="p-1" alt="searchicon" src={searchicon} />
+            <input
+              type="text"
+              className="text-lg font-light outline-none p-1"
+              placeholder="Search"
+              value={searchText}
+              onChange={(e) => {
+                setSearchText(e.target.value);
+                const data = filterData(searchText, allRestaurants);
+                setFilteredRestaurants(data);
+              }}
+            />
           </div>
         </div>
       </div>
-        <div className="flex justify-item-stretch flex-wrap w-3/5 m-auto">
-        {
-        filteredRestaurants?.length === 0 ? (
+      <div className="flex justify-item-stretch flex-wrap w-3/5 m-auto">
+        {filteredRestaurants?.length === 0 ? (
           <h3>
             We're sorry, we couldn't find a restaurant with that name. Please
             try searching again with a different name.
           </h3>
-        ) : ( (searchText === "") ? allRestaurants?.map((restaurant) => (
-          <Link
-            className=" w-60 px-3 pt-5 pb-8 mb-3 mt-5 mx-1 shadow-xl"
-            to={"/restaurants/" + restaurant.data.id}
-            key={restaurant.data.id}
-          >
-            <RestaurantCard {...restaurant.data} />
-          </Link>
-        )) :
+        ) : searchText === "" ? (
+          allRestaurants?.map((restaurant) => (
+            <Link
+              className=" w-60 px-3 pt-5 pb-8 mb-3 mt-5 mx-1 shadow-xl"
+              to={"/restaurants/" + restaurant.data.id}
+              key={restaurant.data.id}
+            >
+              <RestaurantCard {...restaurant.data} />
+            </Link>
+          ))
+        ) : (
           filteredRestaurants?.map((restaurant) => (
             <Link
               className=" w-60 px-3 pt-5 pb-8 mb-3 mt-5 mx-1 shadow-xl"
