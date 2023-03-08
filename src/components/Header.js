@@ -4,6 +4,7 @@ import carticon from "../assets/img/cartIcon.svg";
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Title = () => (
   <Link to="/" className="logo">
@@ -14,8 +15,9 @@ const Title = () => (
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-  const { user } = useContext(UserContext)
+  const { user } = useContext(UserContext);
 
+  const cartItems = useSelector(store => store.cart.items);
 
   return (
     <div className="flex top-0 shadow-md sticky bg-white opacity-95 blur-0 h-16">
@@ -69,6 +71,7 @@ const Header = () => {
             <Link className="flex items-end gap-1 text-base text-zinc-800" to="/cart">
               <img className=" w-7" alt="cart" src={carticon} />
               <span>Cart</span>
+              <span>{cartItems.length}</span>
             </Link>
           </div>
         </div>

@@ -22,8 +22,9 @@ const Body = () => {
     const response = await fetch(FETCH_RESTAURANT_URL);
     const json = await response.json();
     // optional chaining
-    setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-    setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+    console.log(json?.data?.cards[1]?.data?.data?.cards)
+    setAllRestaurants(json?.data?.cards[1]?.data?.data?.cards);
+    setFilteredRestaurants(json?.data?.cards[1]?.data?.data?.cards);
   }
 
   if (!isOnline)

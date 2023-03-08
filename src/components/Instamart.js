@@ -8,7 +8,7 @@ const Section = ({ title, description, isVisible, setIsVisible }) => {
         <button
           className="underline"
           onClick={() => {
-            setIsVisible(false);
+            setIsVisible(false)
           }}
         >
           Hide

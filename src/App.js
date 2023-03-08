@@ -18,17 +18,12 @@ import store from "./utils/store";
 const Instamart = lazy(() => import("./components/Instamart"));
 
 const AppLayout = () => {
+
   return (
     <Provider store={store}>
-      <UserContext.Provider
-        value={{
-          user: user,
-          setUser: setUser
-        }}>
-        <Header />
-        <Outlet />
-        <Footer />
-      </UserContext.Provider>
+      <Header />
+      <Outlet />
+      <Footer />
     </Provider>
   );
 };
