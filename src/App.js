@@ -47,20 +47,8 @@ const appRouter = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path: "/profile",
-        element: <UserProfile />,
-        children: [{
-          path: "register",
-          element: <Register />
-        }]
-      },
-      {
         path: "/cart",
         element: <Cart />,
-      },
-      {
-        path: "/restaurants/:resId",
-        element: <RestaurantMenu />,
       },
       {
         path: "/instamart",
@@ -70,6 +58,20 @@ const appRouter = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path: "/profile",
+        element: <UserProfile />,
+        children: [{
+          path: "register",
+          element: <Register />
+        }]
+      },
+
+      {
+        path: "/restaurants/:resId",
+        element: <RestaurantMenu />,
+      },
+
     ],
   },
 ]);

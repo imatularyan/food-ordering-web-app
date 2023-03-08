@@ -22,9 +22,10 @@ const Body = () => {
     const response = await fetch(FETCH_RESTAURANT_URL);
     const json = await response.json();
     // optional chaining
-    console.log(json?.data?.cards[1]?.data?.data?.cards)
-    setAllRestaurants(json?.data?.cards[1]?.data?.data?.cards);
-    setFilteredRestaurants(json?.data?.cards[1]?.data?.data?.cards);
+    // console.log(json?.data?.cards.map((card) => (card?.data?.data?.cards[0]?.type === 'restaurant') ? card.data?.data?.cards : undefined))
+    setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+    // console.log(json?.data?.cards[2]?.data?.data?.cards[0]?.type)
+    setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
   }
 
   if (!isOnline)
@@ -36,7 +37,7 @@ const Body = () => {
   return allRestaurants?.length === 0 ? (
     <Shimmer />
   ) : (
-    <div>
+    <div className="min-h-screen">
       <div className="flex">
         <div className="w-3/5 m-auto mt-2">
           <div className="flex border-2 border-b-slate-600 rounded w-fit">

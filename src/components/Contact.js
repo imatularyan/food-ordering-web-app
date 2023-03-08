@@ -1,8 +1,8 @@
 const Contact = () => {
     return (
-        <div className=" w-3/5 m-auto">
+        <div className=" w-3/5 m-auto min-h-screen">
             <h1 className="text-3xl p-2 m-2 text-zinc-900 font-bold">Contact Page</h1>
-            
+
         </div>
     )
 };

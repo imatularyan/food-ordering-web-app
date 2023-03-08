@@ -32,7 +32,7 @@ const Instamart = () => {
   const [visibleSection, setVisibleSection] = useState("");
 
   return (
-    <div className=" w-3/5 m-auto text-zinc-900">
+    <div className=" w-3/5 m-auto text-zinc-900 min-h-screen">
       <h1 className=" text-3xl p-2 m-2 font-bold">Instamart</h1>
       <Section
         title={"About Instamart"}

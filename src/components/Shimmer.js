@@ -1,6 +1,6 @@
 const Shimmer = () => {
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap min-h-screen">
       <div className="flex justify-item-stretch flex-wrap w-3/5 m-auto">
         {Array(10)
           .fill("")

@@ -3,20 +3,22 @@ import { IMG_CDN_URL } from "../constants";
 import Shimmer from "../components/Shimmer";
 import useRestaurant from "../utils/useRestaurant";
 import { addItem } from "../utils/cartSlice";
+import { useDispatch } from "react-redux";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const restaurant = useRestaurant(resId);
 
+  const dispatch = useDispatch();
 
-  const handleAddItem = () => {
-    dispatch(addItem("Grapes"));
-  }
+  const addFoodItem = (item) => {
+    dispatch(addItem(item));
+  };
 
   return !restaurant ? (
     <Shimmer />
   ) : (
-    <div className=" mt-2">
+    <div className=" mt-2 min-h-screen">
       <div className=" sticky top-0 w-full bg-zinc-800">
         <div className="flex w-3/5 m-auto h-44 text-cyan-50">
           <img className=" object-contain h-36 m-auto outline outline-1 outline-gray-400" alt="resImg" src={IMG_CDN_URL + restaurant?.cloudinaryImageId} />
@@ -56,9 +58,10 @@ const RestaurantMenu = () => {
               <div className=" text-sm font-semibold">{item?.name}</div>
               <div className=" text-xs font-medium mt-1 break-words break-all">{item?.description}</div>
               <div className=" text-base font-semibold text-yellow-600 mt-1"> ₹{item?.price / 100}</div>
-            </div>
-            <div>
-              <button className="p-2 bg-green-100" onClick={() => handleAddItem()}>Add Item</button>
+              <div>
+                <button className="p-2 bg-red-100" onClick={() => removeFoodItem()}>−</button>
+                <button className="p-2 ml-2 bg-green-100" onClick={() => addFoodItem(item)}>+</button>
+              </div>
             </div>
           </div>
         ))}
