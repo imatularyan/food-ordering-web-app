@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 
 const Title = () => (
   <Link to="/" className="logo">
-    <img className=" w-20" src={Logo} />
+    <img data-testid="logo" className=" w-16" src={Logo} />
   </Link>
 );
 
@@ -20,10 +20,10 @@ const Header = () => {
   const cartItems = useSelector(store => store.cart.items);
 
   return (
-    <div className="flex top-0 shadow-md sticky bg-white opacity-95 blur-0 h-16">
-      <div className="flex items-center w-3/5 m-auto justify-between ">
+    <div className="flex top-0 shadow-md sticky bg-white opacity-95 blur-0 h-14 items-center">
+      <div className="flex min-w-min w-3/5 justify-between m-auto ">
         <Title />
-        <nav className="text-zinc-800">
+        <nav className="text-zinc-900">
           <ul className=" flex overflow-hidden">
             <li className=" p-3">
               <Link to="/">Home</Link>
@@ -43,13 +43,14 @@ const Header = () => {
           <div className="flex text-base font-normal text-zinc-800 items-center">
             {
               (isLoggedIn) ? (<div className="flex items-center gap-5">
-                <Link to="/profile" className="flex items-end gap-1 text-lg text-zinc-800">
+                <Link to="/profile" className="flex items-end gap-1 text-zinc-800">
                   <img className=" w-8" alt="user" src={User} />
                   <div className="">{user.name}</div>
                 </Link>
                 <Link to="/profile"><button
+                  data-testid="logout-status"
                   type="button"
-                  className=" px-3 py-2 outline-1 outline-zinc-800 outline rounded-sm"
+                  className=" p-2 rounded bg-blue-500 text-white hover:bg-blue-600"
                   onClick={() => setIsLoggedIn(false)}
                 >
                   Log Out
@@ -58,20 +59,20 @@ const Header = () => {
                 (<div className=" flex gap-3">
                   <Link to="/"><button
                     type="button"
-                    className=" px-3 py-2 outline-1 outline-zinc-800 outline rounded-sm"
+                    className=" p-2 rounded bg-blue-500 text-white hover:bg-blue-600"
                     onClick={() => setIsLoggedIn(true)}
                   >
                     Log In
                   </button></Link>
-                  <Link to="/profile/register"><button className=" px-3 py-2 outline-1 outline-zinc-800 outline rounded-sm" type="button">Sign Up</button></Link>
+                  <Link to="/profile/register"><button className=" p-2 rounded bg-blue-500 text-white hover:bg-blue-600" type="button">Sign Up</button></Link>
                 </div>)
             }
           </div>
           <div className="cart">
-            <Link className="flex items-end gap-1 text-base text-zinc-800" to="/cart">
+            <Link className="flex items-end gap-1 text-sm text-zinc-800" to="/cart">
               <img className=" w-7" alt="cart" src={carticon} />
               <span>Cart</span>
-              <span>{cartItems.length}</span>
+              <span data-testid="cart">{cartItems.length}</span>
             </Link>
           </div>
         </div>

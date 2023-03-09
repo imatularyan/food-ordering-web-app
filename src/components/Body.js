@@ -22,10 +22,9 @@ const Body = () => {
     const response = await fetch(FETCH_RESTAURANT_URL);
     const json = await response.json();
     // optional chaining
-    // console.log(json?.data?.cards.map((card) => (card?.data?.data?.cards[0]?.type === 'restaurant') ? card.data?.data?.cards : undefined))
     setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-    // console.log(json?.data?.cards[2]?.data?.data?.cards[0]?.type)
     setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+    // console.log(json?.data?.cards[2]?.data?.data?.cards)
   }
 
   if (!isOnline)
@@ -37,14 +36,14 @@ const Body = () => {
   return allRestaurants?.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="min-h-screen">
-      <div className="flex">
-        <div className="w-3/5 m-auto mt-2">
-          <div className="flex border-2 border-b-slate-600 rounded w-fit">
-            <img className="p-1" alt="searchicon" src={searchicon} />
+    <div className="min-h-screen flex flex-col">
+      <div className="">
+        <div className=" flex min-w-min w-3/5 items-start m-auto mt-3">
+          <div className="flex border-2 border-b-slate-600 rounded w-44">
+            <img className="ml-1 w-5" alt="searchicon" src={searchicon} />
             <input
               type="text"
-              className="text-lg font-light outline-none p-1"
+              className="text-lg font-light outline-none p-1 w-36"
               placeholder="Search"
               value={searchText}
               onChange={(e) => {
@@ -56,7 +55,7 @@ const Body = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-item-stretch flex-wrap w-3/5 m-auto">
+      <div className="flex min-w-min w-3/5 justify-items-stretch m-auto flex-wrap mt-3">
         {filteredRestaurants?.length === 0 ? (
           <h3>
             We're sorry, we couldn't find a restaurant with that name. Please
@@ -65,7 +64,7 @@ const Body = () => {
         ) : searchText === "" ? (
           allRestaurants?.map((restaurant) => (
             <Link
-              className=" w-60 px-3 pt-5 pb-8 mb-3 mt-5 mx-1 shadow-xl"
+              className=" w-52 px-3 pt-5 pb-5 mb-2 mx-1 mt-2 outline outline-1 outline-zinc-400"
               to={"/restaurants/" + restaurant.data.id}
               key={restaurant.data.id}
             >
@@ -75,7 +74,7 @@ const Body = () => {
         ) : (
           filteredRestaurants?.map((restaurant) => (
             <Link
-              className=" w-60 px-3 pt-5 pb-8 mb-3 mt-5 mx-1 shadow-xl"
+              className=" w-52 px-3 pt-3 pb-3 mb-2 mx-1 shadow-xl mt-2 outline outline-1 outline-zinc-400"
               to={"/restaurants/" + restaurant.data.id}
               key={restaurant.data.id}
             >

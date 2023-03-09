@@ -50,3 +50,6 @@ Thumbs.db
 
 # parcel files
 .parcel-cache
+
+# coverage
+/coverage
