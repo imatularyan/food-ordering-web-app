@@ -1,7 +1,7 @@
 const Shimmer = () => {
   return (
     <div className="flex flex-wrap min-h-screen">
-      <div className="flex min-w-min w-3/5 justify-items-stretch m-auto flex-wrap mt-3">
+      <div data-testid="shimmer" className="flex min-w-min w-3/5 justify-items-stretch m-auto flex-wrap mt-3">
         {Array(10)
           .fill("")
           .map((e, index) => (

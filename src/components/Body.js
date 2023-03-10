@@ -42,6 +42,7 @@ const Body = () => {
           <div className="flex border-2 border-b-slate-600 rounded w-44">
             <img className="ml-1 w-5" alt="searchicon" src={searchicon} />
             <input
+              data-testid="search-inpt"
               type="text"
               className="text-lg font-light outline-none p-1 w-36"
               placeholder="Search"
@@ -55,7 +56,7 @@ const Body = () => {
           </div>
         </div>
       </div>
-      <div className="flex min-w-min w-3/5 justify-items-stretch m-auto flex-wrap mt-3">
+      <div data-testid="res-list" className="flex min-w-min w-3/5 justify-items-stretch m-auto flex-wrap mt-3">
         {filteredRestaurants?.length === 0 ? (
           <h3>
             We're sorry, we couldn't find a restaurant with that name. Please
