@@ -9,24 +9,30 @@ const RestaurantCard = ({
   costForTwoString,
 }) => {
   return (
-    <div className=" w-72 p-4 mb-4 mx-1 hover:outline outline-gray-300">
-      <div className=" text-zinc-900 w-fit">
+    <div className="w-72 sm:w-64 lg:w-[276px] xl:w-64 2xl:w-[310px] md:w-[311px] p-4 mb-4 mt-1 mx-1 hover:outline outline-1 outline-gray-300 hover:shadow-md">
+      <div className=" text-gray-700">
         <img
-          className=" w-full h-full object-contain"
+          className=" w-full h-full object-contain mb-2"
           alt="foodimg"
           src={IMG_CDN_URL + cloudinaryImageId}
         />
-        <div className=" text-sm font-medium break-words mt-3">{name}</div>
-        <div className=" text-xs mt-1">{cuisines?.join(", ")}</div>
-        <div className=" flex justify-between text-xs items-center mt-3 py-1 h-5">
-          <div className="flex justify-center items-center gap-1 bg-green-500/95 text-white h-5 px-1">
+        <div className=" text-base font-medium break-words py-1">{name}</div>
+        <div className=" text-xs font-light text-gray-500">
+          {cuisines?.join(", ")}
+        </div>
+        <div className=" flex justify-between text-xs items-center mt-4 py-1 h-5">
+          <div className="flex justify-center items-center gap-1 bg-green-500/90 text-white h-5 w-10">
             <span>⭑</span>
             <span>{avgRating}</span>
           </div>
-          <div>·</div>
-          <div>{deliveryTime}MINS</div>
-          <div>·</div>
-          <div>{costForTwoString}</div>
+          <div className=" font-bold text-gray-500">·</div>
+          <div className=" text-xs font-light text-gray-600">
+            {deliveryTime}MINS
+          </div>
+          <div className=" font-bold text-gray-500">·</div>
+          <div className=" text-xs font-light text-gray-600">
+            {costForTwoString}
+          </div>
         </div>
       </div>
     </div>

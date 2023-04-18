@@ -55,10 +55,7 @@ const Body = () => {
             />
           </div>
         </div>
-        <div
-          data-testid="res-list"
-          className="flex min-w-min justify-items-stretch m-auto flex-wrap mt-3"
-        >
+        <div data-testid="res-list" className="flex mx-auto flex-wrap mt-3">
           {filteredRestaurants?.length === 0 ? (
             <h3>
               We're sorry, we couldn't find a restaurant with that name. Please

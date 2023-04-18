@@ -22,41 +22,33 @@ const Header = () => {
   return (
     <div className="flex sticky top-0 bg-white h-14 items-center justify-between w-10/12 lg:w-10/12 m-auto">
       <Title />
-      <nav className="text-zinc-900">
-        <ul className=" flex overflow-hidden">
-          <li className=" p-3">
-            <Link to="/">Home</Link>
-          </li>
-          <li className=" p-3">
-            <Link to="/about">About</Link>
-          </li>
-          <li className=" p-3">
-            <Link to="/contact">Contact</Link>
-          </li>
-          <li className=" p-3">
-            <Link to="/instamart">Instamart</Link>
-          </li>
+      <nav className="text-gray-700">
+        <ul className=" flex overflow-hidden ">
+          <Link to="/">
+            <li className=" p-3">Home</li>
+          </Link>
+          <Link to="/about">
+            <li className=" p-3">About</li>
+          </Link>
+          <Link to="/contact">
+            <li className=" p-3">Contact</li>
+          </Link>
+          <Link to="/instamart">
+            <li className=" p-3">Instamart</li>
+          </Link>
         </ul>
       </nav>
       <div className=" flex items-center gap-5">
-        <div className="flex text-base font-normal text-zinc-800 items-center">
+        <div className="flex font-normal text-gray-700 items-center">
           {isLoggedIn ? (
-            <div className=" flex gap-3">
+            <div className=" flex gap-3 ">
               <Link to="/">
                 <button
                   type="button"
-                  className=" p-2 rounded bg-blue-500 text-white hover:bg-blue-600"
+                  className=" hover:text-orange-400 transition duration-100 ease-in-out"
                   onClick={() => setIsLoggedIn(true)}
                 >
                   Log In
-                </button>
-              </Link>
-              <Link to="/profile/register">
-                <button
-                  className=" p-2 rounded bg-blue-500 text-white hover:bg-blue-600"
-                  type="button"
-                >
-                  Sign Up
                 </button>
               </Link>
             </div>
@@ -64,7 +56,7 @@ const Header = () => {
             <div className="flex items-center gap-5">
               <Link
                 to="/profile"
-                className="flex items-end gap-1 text-zinc-800"
+                className="flex items-end gap-1 text-gray-700"
               >
                 <img className=" w-8" alt="user" src={User} />
                 <div className="">{user.name}</div>
