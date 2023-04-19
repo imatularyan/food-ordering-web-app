@@ -9,7 +9,7 @@ const RestaurantCard = ({
   costForTwoString,
 }) => {
   return (
-    <div className="w-72 sm:w-64 lg:w-[276px] xl:w-64 2xl:w-[310px] md:w-[311px] p-4 mb-4 mt-1 mx-1 hover:outline outline-1 outline-gray-300 hover:shadow-md">
+    <div className=" w-72 min-w-[291px] sm:w-64 md:w-[311px] lg:w-[276px] xl:w-64 2xl:w-[310px] p-4 mb-4 mt-1 mx-1 hover:outline outline-1 outline-gray-300 hover:shadow-md">
       <div className=" text-gray-700">
         <img
           className=" w-full h-full object-contain mb-2"

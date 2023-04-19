@@ -11,6 +11,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [hideSearchIcon, setHideSearchIcon] = useState(true);
   const isOnline = useOnline();
 
   useEffect(() => {
@@ -18,14 +19,23 @@ const Body = () => {
     getRestaurants();
   }, []);
 
-  async function getRestaurants() {
+  const getRestaurants = async () => {
     const response = await fetch(FETCH_RESTAURANT_URL);
-    const json = await response.json();
-    // optional chaining
-    setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-    setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-    // console.log(json?.data?.cards[2]?.data?.data?.cards)
-  }
+    if (response.status >= 200 || response.status <= 299) {
+      const json = await response.json();
+      const firstArrayData = await json?.data?.cards[1]?.data?.data?.cards;
+      const secondArrayData = await json?.data?.cards[2]?.data?.data?.cards;
+      if (!secondArrayData.length > 10 || secondArrayData === undefined) {
+        setAllRestaurants(firstArrayData);
+        setFilteredRestaurants(firstArrayData);
+      } else {
+        setAllRestaurants(secondArrayData);
+        setFilteredRestaurants(secondArrayData);
+      }
+    } else {
+      console.log(response.status);
+    }
+  };
 
   if (!isOnline)
     return <h1>🔴 Offline, please check your internet connection!!</h1>;
@@ -36,17 +46,22 @@ const Body = () => {
   return allRestaurants?.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className=" flex flex-col">
-      <div className=" w-10/12 lg:w-10/12 mx-auto">
-        <div className="flex  m-4 ">
-          <div className="flex border-2 border-b-orange-300 rounded w-44">
-            <img className="ml-1 w-5" alt="searchicon" src={searchicon} />
+    <div className=" flex flex-col w-full bg-orange-50/30">
+      <div className=" w-10/12 lg:w-10/12 mx-auto border-b border-gray-300 pb-10 pt-2">
+        <div className="flex py-2 justify-center">
+          <div className="flex rounded-md w-44 shadow-sm hover:ring ring-gray-400 hover:ring-orange-100 border border-gray-400 outline-none hover:border-orange-200 transition delay-100 duration-100 ease-in-out">
+            {hideSearchIcon && (
+              <img className="ml-1 w-5" alt="searchicon" src={searchicon} />
+            )}
             <input
               data-testid="search-inpt"
               type="text"
-              className="text-lg font-light outline-none p-1 w-36"
+              name="search"
+              className="text-lg font-light rounded-md outline-none p-1 w-36 placeholder:text-base text-gray-700"
               placeholder="Search"
               value={searchText}
+              onFocus={() => setHideSearchIcon(false)}
+              onBlur={() => setHideSearchIcon(true)}
               onChange={(e) => {
                 setSearchText(e.target.value);
                 const data = filterData(searchText, allRestaurants);
@@ -64,19 +79,19 @@ const Body = () => {
           ) : searchText === "" ? (
             allRestaurants?.map((restaurant) => (
               <Link
-                to={"/restaurants/" + restaurant.data.id}
-                key={restaurant.data.id}
+                to={"/restaurants/" + restaurant?.data?.id}
+                key={restaurant?.data?.id}
               >
-                <RestaurantCard {...restaurant.data} />
+                <RestaurantCard {...restaurant?.data} />
               </Link>
             ))
           ) : (
             filteredRestaurants?.map((restaurant) => (
               <Link
-                to={"/restaurants/" + restaurant.data.id}
-                key={restaurant.data.id}
+                to={"/restaurants/" + restaurant?.data?.id}
+                key={restaurant?.data?.id}
               >
-                <RestaurantCard {...restaurant.data} />
+                <RestaurantCard {...restaurant?.data} />
               </Link>
             ))
           )}

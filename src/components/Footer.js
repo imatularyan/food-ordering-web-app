@@ -1,7 +1,9 @@
 const Footer = () => {
   return (
-    <div className="flex justify-center items-center text-base font-light text-zinc-900 shadow-sm bg-zinc-100 clear-both relative h-14 mt-24">
-      <h4>©2023 Atul Aryan</h4>
+    <div className=" static bottom-0 h-72 w-full bg-orange-50/80 shadow-sm">
+      <div className="flex justify-evenly items-center w-full h-full">
+        <footer className="font-light">Made with ❤️ by Atul Aryan</footer>
+      </div>
     </div>
   );
 };

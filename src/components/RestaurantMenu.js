@@ -7,10 +7,8 @@ import { useDispatch } from "react-redux";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-  const restaurant = useRestaurant(resId);
-
+  const [restaurantItems, restaurant] = useRestaurant(resId);
   const dispatch = useDispatch();
-
   const addFoodItem = (item) => {
     dispatch(addItem(item));
   };
@@ -20,7 +18,7 @@ const RestaurantMenu = () => {
   ) : (
     <div className=" mt-2 min-h-screen">
       <div className=" sticky top-0 w-full bg-zinc-800">
-        <div className="flex w-3/5 m-auto h-36 text-cyan-50">
+        <div className="flex w-4/5 m-auto h-36 text-cyan-50">
           <img
             className=" object-contain h-32 m-auto outline outline-1 outline-gray-400"
             alt="resImg"
@@ -33,7 +31,7 @@ const RestaurantMenu = () => {
             </div>
             <div>
               <span>Area: </span>
-              {restaurant?.area}
+              {restaurant?.areaName}
             </div>
             <div>
               <span>City: </span>
@@ -47,58 +45,50 @@ const RestaurantMenu = () => {
               <span>Price:</span>
               <span className="text-yellow-600">
                 {" "}
-                {restaurant?.costForTwoMsg}
+                {restaurant?.costForTwoMessage}
               </span>
             </div>
           </div>
         </div>
       </div>
-      <div className=" max-w-7xl m-auto">
-        <div
-          data-testid="menu-items"
-          className=" capitalize text-center font-bold text-xl text-zinc-600"
-        >
-          The Menu
-        </div>
-        {Object.values(restaurant?.menu?.items).map((item) => (
+      <div className=" w-full h-screen border ">
+        {restaurantItems?.map((item) => (
           <div
-            className=" flex w-2/4 my-4 mx-auto pt-5 border-t-2 gap-4"
-            key={item?.id}
+            className=" flex w-2/4 mx-auto border my-2 text-gray-800"
+            key={item?.card?.info?.id}
           >
-            <div className=" w-fit h-fit">
+            <div className=" w-1/4 h-32">
               <img
-                className=" w-40 object-contain max-w-none outline outline-2 outline-zinc-300 rounded-sm"
-                src={IMG_CDN_URL + item?.cloudinaryImageId}
+                className="w-full h-full object-cover outline outline-gray-300 rounded-sm"
+                src={IMG_CDN_URL + item?.card?.info?.imageId}
               />
             </div>
-            <div className=" flex flex-col flex-auto text-right">
-              <div className=" text-xs font-medium">
-                {item?.isVeg == 1 ? "Veg 🟢" : "Non-Veg 🔴"}
+            <div className="text-right text-xs w-3/4 ml-2 h-32">
+              <span className=" font-normal m-1">
+                {item?.card?.info?.isVeg == 1 ? "Veg 🟢" : "Non-Veg 🔴"}
+              </span>
+              <div className="font-medium m-1">{item?.card?.info?.name}</div>
+              <span className=" break-words font-normal text-ellipsis overflow-hidden m-1">
+                {item?.card?.info?.description}
+              </span>
+              <div className=" text-sm font-medium text-yellow-600 m-1">
+                ₹{item?.card?.info?.price / 100}
               </div>
-              <div className=" text-xs font-medium">{item?.name}</div>
-              <div className=" text-xs mt-1 break-words break-all">
-                {item?.description}
-              </div>
-              <div className=" text-base font-medium text-yellow-600 mt-1">
-                {" "}
-                ₹{item?.price / 100}
-              </div>
-              <div className=" flex justify-between mt-2 ml-auto h-5 items-center">
+              <span className="m-1">
                 <button
-                  className="p-1 bg-red-100"
+                  className=" bg-red-100 h-5 w-5 mr-1 shadow-sm"
                   onClick={() => removeFoodItem()}
                 >
                   −
                 </button>
-                <div className=" w-7"></div>
                 <button
                   data-testid="addBtn"
-                  className="p-1 bg-green-100"
+                  className=" bg-green-100 h-5 w-5 ml-1 shadow-sm"
                   onClick={() => addFoodItem(item)}
                 >
                   +
                 </button>
-              </div>
+              </span>
             </div>
           </div>
         ))}
