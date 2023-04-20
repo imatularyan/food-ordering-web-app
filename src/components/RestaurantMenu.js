@@ -51,15 +51,15 @@ const RestaurantMenu = () => {
           </div>
         </div>
       </div>
-      <div className=" w-full h-screen border ">
+      <div className=" w-3/6 border-r border-l mx-auto px-4">
         {restaurantItems?.map((item) => (
           <div
-            className=" flex w-2/4 mx-auto border my-2 text-gray-800"
+            className=" flex w-full mx-auto shadow-sm border my-2 text-gray-800 rounded-sm items-center bg-white p-2"
             key={item?.card?.info?.id}
           >
-            <div className=" w-1/4 h-32">
+            <div className=" w-1/4 h-fit border-2 border-gray-100 rounded-sm ">
               <img
-                className="w-full h-full object-cover outline outline-gray-300 rounded-sm"
+                className="w-full object-contain rounded-sm"
                 src={IMG_CDN_URL + item?.card?.info?.imageId}
               />
             </div>
@@ -68,9 +68,11 @@ const RestaurantMenu = () => {
                 {item?.card?.info?.isVeg == 1 ? "Veg 🟢" : "Non-Veg 🔴"}
               </span>
               <div className="font-medium m-1">{item?.card?.info?.name}</div>
-              <span className=" break-words font-normal text-ellipsis overflow-hidden m-1">
-                {item?.card?.info?.description}
-              </span>
+              {item?.card?.info?.description && (
+                <span className=" break-words font-normal text-ellipsis overflow-hidden m-1">
+                  {item?.card?.info?.description}
+                </span>
+              )}
               <div className=" text-sm font-medium text-yellow-600 m-1">
                 ₹{item?.card?.info?.price / 100}
               </div>
