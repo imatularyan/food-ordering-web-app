@@ -9,10 +9,10 @@ const RestaurantCard = ({
   costForTwoString,
 }) => {
   return (
-    <div className=" w-72 min-w-[291px] sm:w-64 md:w-[311px] lg:w-[276px] xl:w-64 2xl:w-[310px] p-4 mb-4 mt-1 mx-1 hover:outline outline-1 outline-gray-300 hover:shadow-md">
+    <div className="w-full sm:w-full md:w-[311px] lg:w-[276px] xl:w-72 2xl:w-[247px] p-4 mb-4 mt-1 mx-1 hover:outline outline-1 outline-gray-300 hover:shadow-md">
       <div className=" text-gray-700">
         <img
-          className=" w-full h-full object-contain mb-2"
+          className=" w-full h-full object-contain mb-2 border"
           alt="foodimg"
           src={IMG_CDN_URL + cloudinaryImageId}
         />

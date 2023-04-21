@@ -7,7 +7,7 @@ import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
 
 const Title = () => (
-  <Link to="/" className="logo">
+  <Link to="/">
     <img data-testid="logo" className=" w-16" src={Logo} />
   </Link>
 );
@@ -18,46 +18,36 @@ const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
 
   return (
-    <div className="w-full bg-[#fffdfa] sticky top-0 ">
-      <div className="flex h-14 items-center justify-between w-10/12 lg:w-10/12 mx-auto">
+    <div className="w-full bg-[#fffdfa] sticky top-0 text-gray-700">
+      <div className="flex h-16 justify-between w-10/12 lg:w-10/12 mx-auto p-2">
         <Title />
-        <nav className="text-gray-700">
-          <ul className=" flex overflow-hidden ">
-            <Link to="/">
-              <li className=" p-3">Home</li>
-            </Link>
-            <Link to="/about">
-              <li className=" p-3">About</li>
-            </Link>
-            <Link to="/contact">
-              <li className=" p-3">Contact</li>
-            </Link>
-            <Link to="/instamart">
-              <li className=" p-3">Instamart</li>
-            </Link>
-          </ul>
-        </nav>
-        <div className=" flex items-center gap-5">
-          <div className="flex font-normal text-gray-700 items-center">
-            <div className=" flex gap-3 ">
+        <ul className=" flex overflow-hidden text-gray-700">
+          <Link to="/">
+            <li className=" p-3">Home</li>
+          </Link>
+          <Link to="/about">
+            <li className=" p-3">About</li>
+          </Link>
+          <Link to="/contact">
+            <li className=" p-3">Contact</li>
+          </Link>
+          <Link to="/instamart">
+            <li className=" p-3">Instamart</li>
+          </Link>
+        </ul>
+        <div className=" flex items-center gap-2">
+          <div className="flex font-normal items-center">
+            <div className="hover:text-blue-500 text-orange-400 border-r p-2 transition duration-100 ease-in-out">
               <Link to="/">
-                <button
-                  type="button"
-                  className="hover:text-blue-500 text-orange-400 border-r p-2 transition duration-100 ease-in-out"
-                  onClick={() => setIsLoggedIn(true)}
-                >
+                <button type="button" onClick={() => setIsLoggedIn(true)}>
                   Log In
                 </button>
               </Link>
             </div>
           </div>
-          <div className="cart">
-            <Link
-              className="flex items-end gap-1 text-sm text-zinc-800"
-              to="/cart"
-            >
+          <div className="">
+            <Link to="/cart" className="flex items-center gap-1 justify-center">
               <img className=" w-7" alt="cart" src={carticon} />
-              <span>Cart</span>
               <span data-testid="cart">{cartItems.length}</span>
             </Link>
           </div>
