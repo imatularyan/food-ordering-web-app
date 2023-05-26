@@ -19,20 +19,24 @@ const Body = () => {
   }, []);
 
   const getRestaurants = async () => {
-    const response = await fetch(FETCH_RESTAURANT_URL);
-    if (response.status >= 200 || response.status <= 299) {
-      const json = await response.json();
-      const firstArrayData = await json?.data?.cards[1]?.data?.data?.cards;
-      const secondArrayData = await json?.data?.cards[2]?.data?.data?.cards;
-      if (!secondArrayData.length > 10 || secondArrayData === undefined) {
-        setAllRestaurants(firstArrayData);
-        setFilteredRestaurants(firstArrayData);
+    try {
+      const response = await fetch(FETCH_RESTAURANT_URL);
+      if (response.status >= 200 || response.status <= 299) {
+        const json = await response.json();
+        const firstArrayData = await json?.data?.cards[1]?.data?.data?.cards;
+        const secondArrayData = await json?.data?.cards[2]?.data?.data?.cards;
+        if (!secondArrayData?.length > 10 || secondArrayData === undefined) {
+          setAllRestaurants(firstArrayData);
+          setFilteredRestaurants(firstArrayData);
+        } else {
+          setAllRestaurants(secondArrayData);
+          setFilteredRestaurants(secondArrayData);
+        }
       } else {
-        setAllRestaurants(secondArrayData);
-        setFilteredRestaurants(secondArrayData);
+        console.log(response.status);
       }
-    } else {
-      console.log(response.status);
+    } catch (err) {
+      console.log(err);
     }
   };
 
