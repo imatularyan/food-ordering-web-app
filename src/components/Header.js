@@ -18,7 +18,7 @@ const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
 
   return (
-    <div className="w-full bg-[#fffdfa] sticky top-0 text-gray-700 font-normal shadow-sm">
+    <div className="w-full bg-[#fffdfa] sticky top-0 text-gray-700 font-normal">
       <div className="flex h-16 justify-between w-10/12 lg:w-10/12 mx-auto p-2">
         <Title />
         <ul className=" inline-flex overflow-hidden text-gray-700">

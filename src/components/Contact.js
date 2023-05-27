@@ -3,11 +3,11 @@ import contactImg from "../assets/img/contactUs.png";
 const Contact = () => {
   return (
     <div className="h-screen">
-      <div className=" w-10/12 rounded-lg mx-auto bg-orange-400/100 p-8 text-gray-700 text-sm mt-16">
+      <div className=" w-10/12 rounded-lg mx-auto bg-orange-200 p-8 text-gray-700 text-sm mt-16">
         <div className="flex w-full">
           <div className=" basis-3/5">
-            <h1 className="text-3xl font-bold text-white">Contact</h1>
-            <p className=" text-lg text-white mt-3 pr-4">
+            <h1 className="text-3xl font-bold text-gray-800">Contact</h1>
+            <p className=" text-2xl font-light text-gray-700 mt-3 pr-4">
               Your satisfaction is our top priority. Contact us today and let us
               serve you a delightful dining experience!
             </p>
@@ -39,7 +39,7 @@ const Contact = () => {
                   id="message"
                   type="textarea"
                   name="message"
-                  className=" p-3 rounded-md outline-none focus:border-blue-600 mt-2 h-44"
+                  className=" p-3 rounded-md outline-none focus:border-blue-600 mt-2 h-64"
                   placeholder="Message"
                 />
               </div>
