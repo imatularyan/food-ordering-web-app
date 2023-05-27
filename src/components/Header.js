@@ -18,29 +18,35 @@ const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
 
   return (
-    <div className="w-full bg-[#fffdfa] sticky top-0 text-gray-700 font-normal">
+    <div className="w-full bg-[#fffdfa] sticky top-0 text-gray-700 font-normal shadow-sm">
       <div className="flex h-16 justify-between w-10/12 lg:w-10/12 mx-auto p-2">
         <Title />
         <ul className=" inline-flex overflow-hidden text-gray-700">
           <Link to="/">
-            <li className=" p-3 text-orange-500">Home</li>
+            <li className=" p-3 text-orange-500 hover:text-orange-500/80">
+              Home
+            </li>
           </Link>
           <Link to="/about">
-            <li className=" p-3 text-orange-500">About</li>
+            <li className=" p-3 text-orange-500 hover:text-orange-500/80">
+              About
+            </li>
           </Link>
           <Link to="/contact">
-            <li className=" p-3 text-orange-500">Contact</li>
+            <li className=" p-3 text-orange-500 hover:text-orange-500/80">
+              Contact
+            </li>
           </Link>
           <Link to="/instamart">
-            <li className=" p-3 text-orange-500">Instamart</li>
+            <li className=" p-3 text-orange-500 hover:text-orange-500/80">
+              Instamart
+            </li>
           </Link>
           <li className="flex items-center gap-2">
             <div className="flex font-normal items-center">
-              <div className="text-indigo-500 hover:text-indigo-400 border-r border-l p-2 transition duration-100 ease-in-out">
+              <div className="text-blue-500 hover:text-blue-500/80 border-r border-l p-2 transition duration-100 ease-in-out">
                 <Link to="/">
-                  <button type="button" onClick={() => setIsLoggedIn(true)}>
-                    Log In
-                  </button>
+                  <button type="button">Log In</button>
                 </Link>
               </div>
             </div>
