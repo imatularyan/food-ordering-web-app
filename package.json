@@ -42,6 +42,5 @@
   },
   "browserslist": [
     "last 10 Chrome versions"
-  ],
-  "main": "jest.config.js"
+  ]
 }
