@@ -36,7 +36,7 @@ class About extends Component {
                     <img
                       width="130"
                       src="https://avatars.githubusercontent.com/u/47840940?v=4"
-                      className=" rounded-full"
+                      className=" rounded-full border-white border"
                     />
                   </div>
                   <Link to="https://github.com/imatularyan">

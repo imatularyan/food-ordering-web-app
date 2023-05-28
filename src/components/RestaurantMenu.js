@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { IMG_CDN_URL } from "../constants";
-import Shimmer from "../components/Shimmer";
+import ShimmerMenu from "../components/ShimmerMenu";
 import useRestaurant from "../utils/useRestaurant";
 import { addItem } from "../utils/cartSlice";
 import { useDispatch } from "react-redux";
@@ -14,7 +14,7 @@ const RestaurantMenu = () => {
   };
 
   return !restaurant ? (
-    <Shimmer />
+    <ShimmerMenu />
   ) : (
     <div className=" mt-2 min-h-screen">
       <div className=" sticky top-0 w-full bg-zinc-800">
