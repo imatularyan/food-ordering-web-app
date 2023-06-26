@@ -13,6 +13,8 @@ const Body = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const isOnline = useOnline();
 
+  console.log(searchText);
+
   useEffect(() => {
     getRestaurants();
   }, []);
@@ -70,12 +72,7 @@ const Body = () => {
         </div>
         <div data-testid="res-list" className="mx-auto mt-3">
           <div className="flex flex-wrap mx-[7px]">
-            {filteredRestaurants?.length === 0 ? (
-              <h3>
-                We're sorry, we couldn't find a restaurant with that name.
-                Please try searching again with a different name.
-              </h3>
-            ) : searchText === "" ? (
+            {searchText === "" ? (
               allRestaurants?.map((restaurant) => (
                 <Link
                   to={"/restaurants/" + restaurant?.data?.id}
@@ -84,8 +81,13 @@ const Body = () => {
                   <RestaurantCard {...restaurant?.data} />
                 </Link>
               ))
+            ) : filteredRestaurants?.length === 0 ? (
+              <h3 className=" min-h-screen w-full text-center my-56">
+                We're sorry, we couldn't find a restaurant with that name.
+                Please try searching again with a different name.
+              </h3>
             ) : (
-              allRestaurants?.map((restaurant) => (
+              filteredRestaurants?.map((restaurant) => (
                 <Link
                   to={"/restaurants/" + restaurant?.data?.id}
                   key={restaurant?.data?.id}
