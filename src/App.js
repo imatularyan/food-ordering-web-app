@@ -12,7 +12,7 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import { Provider } from "react-redux";
 import store from "./utils/store";
 
-const Instamart = lazy(() => import("./components/Instamart"));
+const Instamart = lazy(() => import("./components/Help"));
 
 const AppLayout = () => {
   return (
@@ -47,7 +47,7 @@ const appRouter = createBrowserRouter([
         element: <Cart />,
       },
       {
-        path: "/instamart",
+        path: "/help",
         element: (
           <Suspense fallback={<h2>Loading....</h2>}>
             <Instamart />

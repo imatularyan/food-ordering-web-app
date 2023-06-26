@@ -14,7 +14,6 @@ const Body = () => {
   const isOnline = useOnline();
 
   useEffect(() => {
-    // API call
     getRestaurants();
   }, []);
 
@@ -49,7 +48,7 @@ const Body = () => {
   return allRestaurants?.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className=" flex flex-col w-full bg-orange-50/30">
+    <div className=" flex flex-col w-full">
       <div className=" w-10/12 lg:w-10/12 mx-auto border-b border-gray-300 pb-10 pt-2">
         <div className="flex py-2 justify-center">
           <div className="flex rounded-md w-max shadow-sm hover:ring ring-gray-400 hover:ring-orange-100 border border-gray-400 outline-none hover:border-orange-200 transition delay-100 duration-100 ease-in-out">
@@ -69,34 +68,33 @@ const Body = () => {
             />
           </div>
         </div>
-        <div
-          data-testid="res-list"
-          className="flex justify-center flex-wrap mt-3 mx-auto"
-        >
-          {filteredRestaurants?.length === 0 ? (
-            <h3>
-              We're sorry, we couldn't find a restaurant with that name. Please
-              try searching again with a different name.
-            </h3>
-          ) : searchText === "" ? (
-            allRestaurants?.map((restaurant) => (
-              <Link
-                to={"/restaurants/" + restaurant?.data?.id}
-                key={restaurant?.data?.id}
-              >
-                <RestaurantCard {...restaurant?.data} />
-              </Link>
-            ))
-          ) : (
-            filteredRestaurants?.map((restaurant) => (
-              <Link
-                to={"/restaurants/" + restaurant?.data?.id}
-                key={restaurant?.data?.id}
-              >
-                <RestaurantCard {...restaurant?.data} />
-              </Link>
-            ))
-          )}
+        <div data-testid="res-list" className="mx-auto mt-3">
+          <div className="flex flex-wrap mx-[7px]">
+            {filteredRestaurants?.length === 0 ? (
+              <h3>
+                We're sorry, we couldn't find a restaurant with that name.
+                Please try searching again with a different name.
+              </h3>
+            ) : searchText === "" ? (
+              allRestaurants?.map((restaurant) => (
+                <Link
+                  to={"/restaurants/" + restaurant?.data?.id}
+                  key={restaurant?.data?.id}
+                >
+                  <RestaurantCard {...restaurant?.data} />
+                </Link>
+              ))
+            ) : (
+              allRestaurants?.map((restaurant) => (
+                <Link
+                  to={"/restaurants/" + restaurant?.data?.id}
+                  key={restaurant?.data?.id}
+                >
+                  <RestaurantCard {...restaurant?.data} />
+                </Link>
+              ))
+            )}
+          </div>
         </div>
       </div>
     </div>

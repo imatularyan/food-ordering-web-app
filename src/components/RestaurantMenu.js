@@ -3,6 +3,7 @@ import { IMG_CDN_URL } from "../constants";
 import ShimmerMenu from "../components/ShimmerMenu";
 import useRestaurant from "../utils/useRestaurant";
 import { addItem } from "../utils/cartSlice";
+import { removeItem } from "../utils/cartSlice";
 import { useDispatch } from "react-redux";
 
 const RestaurantMenu = () => {
@@ -11,6 +12,9 @@ const RestaurantMenu = () => {
   const dispatch = useDispatch();
   const addFoodItem = (item) => {
     dispatch(addItem(item));
+  };
+  const removeFoodItem = (item) => {
+    dispatch(removeItem(item));
   };
 
   return !restaurant ? (
@@ -51,7 +55,7 @@ const RestaurantMenu = () => {
           </div>
         </div>
       </div>
-      <div className=" w-3/6 border-r border-l mx-auto px-4">
+      <div className=" w-3/6 border-r border-l mx-auto px-4 h-full">
         {restaurantItems?.map((item) => (
           <div
             className=" flex w-full mx-auto shadow-sm border my-2 text-gray-800 rounded-sm items-center bg-white p-2"
@@ -63,8 +67,8 @@ const RestaurantMenu = () => {
                 src={IMG_CDN_URL + item?.card?.info?.imageId}
               />
             </div>
-            <div className="text-right text-xs w-3/4 ml-2 h-32">
-              <span className=" font-normal m-1">
+            <div className="text-right text-xs w-3/4 ml-2 h-fit">
+              <span className=" font-normal">
                 {item?.card?.info?.isVeg == 1 ? "Veg 🟢" : "Non-Veg 🔴"}
               </span>
               <div className="font-medium m-1">{item?.card?.info?.name}</div>
@@ -79,7 +83,7 @@ const RestaurantMenu = () => {
               <span className="m-1">
                 <button
                   className=" bg-red-100 h-5 w-5 mr-1 shadow-sm"
-                  onClick={() => removeFoodItem()}
+                  onClick={() => removeFoodItem(item)}
                 >
                   −
                 </button>

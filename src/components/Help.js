@@ -1,39 +1,43 @@
 import { useState } from "react";
+import arrowUp from "../assets/img/arrow-up.svg";
+import arrowDown from "../assets/img/arrow-down.svg";
 
 const Section = ({ title, description, isVisible, setIsVisible }) => {
   return (
-    <div className=" border border-black m-2 p-2">
-      <h3 className="font-bold text-xl">{title}</h3>
-      {isVisible ? (
-        <button
-          className="underline"
-          onClick={() => {
-            setIsVisible(false)
-          }}
-        >
-          Hide
-        </button>
-      ) : (
-        <button
-          className="underline"
-          onClick={() => {
-            setIsVisible(true);
-          }}
-        >
-          Show
-        </button>
+    <div className=" my-2 rounded-md bg-gray-200 shadow-sm ">
+      <button
+        className="w-full"
+        onClick={() => {
+          setIsVisible(!isVisible);
+        }}
+      >
+        <h3 className="font-medium text-base text-gray-800 p-4 flex justify-between">
+          {title}{" "}
+          {isVisible ? (
+            <img width="20" src={arrowUp} />
+          ) : (
+            <img width="20" src={arrowDown} />
+          )}{" "}
+        </h3>
+      </button>
+
+      {isVisible && (
+        <p className="text-gray-800 font-light bg-gray-100 px-4 pb-4 pt-2 shadow-sm rounded-b-md">
+          {description}
+        </p>
       )}
-      {isVisible && <p>{description}</p>}
     </div>
   );
 };
 
-const Instamart = () => {
-  const [visibleSection, setVisibleSection] = useState("");
+const Help = () => {
+  const [visibleSection, setVisibleSection] = useState("about");
 
   return (
-    <div className=" w-3/5 m-auto text-zinc-900 min-h-screen">
-      <h1 className=" text-3xl p-2 m-2 font-bold">Instamart</h1>
+    <div className=" w-10/12 m-auto text-gray-900 min-h-screen p-8 ">
+      <h1 className=" text-2xl font-normal p-2 text-center text-gray-800">
+        Help
+      </h1>
       <Section
         title={"About Instamart"}
         description={
@@ -41,7 +45,7 @@ const Instamart = () => {
         }
         isVisible={visibleSection === "about"}
         setIsVisible={() => {
-          setVisibleSection === "about";
+          setVisibleSection(visibleSection === "about" ? "" : "about");
         }}
       />
 
@@ -52,7 +56,7 @@ const Instamart = () => {
         }
         isVisible={visibleSection === "team"}
         setIsVisible={() => {
-          setVisibleSection === "team";
+          setVisibleSection(visibleSection === "team" ? "" : "team");
         }}
       />
 
@@ -63,7 +67,7 @@ const Instamart = () => {
         }
         isVisible={visibleSection === "career"}
         setIsVisible={() => {
-          setVisibleSection === "career";
+          setVisibleSection(visibleSection === "career" ? "" : "career");
         }}
       />
       <Section
@@ -73,7 +77,7 @@ const Instamart = () => {
         }
         isVisible={visibleSection === "product"}
         setIsVisible={() => {
-          setVisibleSection === "product";
+          setVisibleSection(visibleSection === "product" ? "" : "product");
         }}
       />
 
@@ -84,11 +88,11 @@ const Instamart = () => {
         }
         isVisible={visibleSection === "details"}
         setIsVisible={() => {
-          setVisibleSection === "details";
+          setVisibleSection(visibleSection === "details" ? "" : "details");
         }}
       />
     </div>
   );
 };
 
-export default Instamart;
+export default Help;
