@@ -78,7 +78,7 @@ const RestaurantMenu = () => {
                 </span>
               )}
               <div className=" text-sm font-medium text-yellow-600 m-1">
-                ₹{item?.card?.info?.price / 100}
+                ₹{item?.card?.info?.defaultPrice / 100}
               </div>
               <span className="m-1">
                 <button

@@ -24,15 +24,11 @@ const Body = () => {
       const response = await fetch(FETCH_RESTAURANT_URL);
       if (response.status >= 200 || response.status <= 299) {
         const json = await response.json();
-        const firstArrayData = await json?.data?.cards[1]?.data?.data?.cards;
-        const secondArrayData = await json?.data?.cards[2]?.data?.data?.cards;
-        if (!secondArrayData?.length > 10 || secondArrayData === undefined) {
-          setAllRestaurants(firstArrayData);
-          setFilteredRestaurants(firstArrayData);
-        } else {
-          setAllRestaurants(secondArrayData);
-          setFilteredRestaurants(secondArrayData);
-        }
+        const restaurantsData = await json?.data?.cards[4]?.card?.card
+          ?.gridElements?.infoWithStyle?.restaurants;
+        console.log("restaurants data: ", await json?.data?.cards);
+        setAllRestaurants(restaurantsData);
+        setFilteredRestaurants(restaurantsData);
       } else {
         console.log(response.status);
       }
@@ -75,10 +71,10 @@ const Body = () => {
             {searchText === "" ? (
               allRestaurants?.map((restaurant) => (
                 <Link
-                  to={"/restaurants/" + restaurant?.data?.id}
-                  key={restaurant?.data?.id}
+                  to={"/restaurants/" + restaurant?.info?.id}
+                  key={restaurant?.info?.id}
                 >
-                  <RestaurantCard {...restaurant?.data} />
+                  <RestaurantCard {...restaurant?.info} />
                 </Link>
               ))
             ) : filteredRestaurants?.length === 0 ? (
@@ -89,10 +85,10 @@ const Body = () => {
             ) : (
               filteredRestaurants?.map((restaurant) => (
                 <Link
-                  to={"/restaurants/" + restaurant?.data?.id}
-                  key={restaurant?.data?.id}
+                  to={"/restaurants/" + restaurant?.info?.id}
+                  key={restaurant?.info?.id}
                 >
-                  <RestaurantCard {...restaurant?.data} />
+                  <RestaurantCard {...restaurant?.info} />
                 </Link>
               ))
             )}
