@@ -15,9 +15,10 @@ const useRestaurant = (resId) => {
       const response = await fetch(FETCH_MENU_URL + resId);
       if (response.status >= 200 || response.status <= 299) {
         const json = await response.json();
-        const restItems = await json?.data?.cards[2].groupedCard?.cardGroupMap
+        const restItems = await json?.data?.cards[3].groupedCard?.cardGroupMap
           ?.REGULAR?.cards[1]?.card?.card?.itemCards;
         const restDetails = await json?.data?.cards[0]?.card?.card?.info;
+        console.log(restDetails);
         setRestaurant(restDetails);
         setRestaurantItems(restItems);
       } else {

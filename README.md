@@ -1,76 +1,118 @@
-# Namaste React Live 🚀
-by Akshay saini
+## Namaste React Live course 🚀 by Akshay saini
 
-# Make sure CORS is enable
+# Food Ordering Web App
 
-# Getting Started with Create React App
+## Introduction
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Food Ordering Web App is an interactive application that allows users to search and select their favorite foods or restaurants. It displays all available cuisines, dishes, and foods served by a selected restaurant, enabling customers to manage their orders effectively. This app also features a cart section where users can add and remove food quantities. User login functionality is under development to offer a more personalized experience.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Search Functionality:** Enables users to search for their preferred restaurants and foods.
+- **Cuisine and Dish Display:** Showcases all cuisines and dishes available from a selected restaurant.
+- **Cart Management:** Allows users to add or remove items in their cart and see updates in real-time.
+- **User Login:** (In Development) To provide users with a personalized ordering experience.
 
-### `npm start`
+## Technologies
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Front-end:** React, React-DOM, React-Redux, React Router DOM, TailwindCSS, Formik
+- **State Management:** ReduxJS/Toolkit, React Hooks, UserContext API
+- **Development Tools:** Babel (Core, Preset-Env, Preset-React), Parcel, Jest, @testing-library/react, PostCSS
+- **Techniques:** Custom Hooks, Lazy Loading, Chunking, Prop Drilling
+- **APIs:** Swiggy API (Assumed for demonstration purposes)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## CORS Policy
 
-### `npm test`
+The app might face Cross-Origin Resource Sharing (CORS) issues when interacting with external APIs due to browser security measures. During development, ensure the backend server is configured to include appropriate CORS headers. For production, configure the server to allow requests from your domain.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Project Structure
 
-### `npm run build`
+```
+/food-ordering-web-app
+├── .parcel-cache/
+├── dist/
+├── node_modules/
+├── src/
+│   ├── assets/
+│   │   └── img/            # All images used in the app
+│   ├── components/         # React components
+│   │   ├── __tests__/      # Test cases for components
+│   │   ├── About.js
+│   │   ├── Body.js
+│   │   ├── Cart.js
+│   │   ├── Contact.js
+│   │   ├── Error.js
+│   │   ├── FoodItem.js
+│   │   ├── Footer.js
+│   │   ├── Header.js
+│   │   ├── Help.js
+│   │   ├── Modal.js
+│   │   ├── ProfileClass.js
+│   │   ├── RestaurantCard.js
+│   │   ├── RestaurantMenu.js
+│   │   ├── Shimmer.js
+│   │   ├── ShimmerMenu.js
+│   ├── mocks/              # Mock data
+│   │   ├── data.js
+│   │   ├── dummyLogo.js
+│   ├── utils/              # Utilities and custom hooks
+│   │   ├── cartSlice.js
+│   │   ├── help.js
+│   │   ├── store.js
+│   │   ├── useOnline.js
+│   │   ├── UserContext.js
+│   │   ├── useRestaurant.js
+│   ├── App.js
+│   ├── constants.js
+├── .babelrc
+├── .gitignore
+├── .postcssrc
+├── index.css
+├── index.html
+├── jest.config.js
+├── package-lock.json
+├── package.json
+├── README.md
+└── tailwind.config.js
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clone the repository**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```sh
+git clone https://github.com/imatularyan/food-ordering-web-app.git
+cd food-ordering-web-app
+```
 
-### `npm run eject`
+2. **Install dependencies**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```sh
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. **Start the development server**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```sh
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The server will run on `http://localhost:1234` by default.
 
-## Learn More
+## Usage
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+After launching the server, access the app at `http://localhost:1234`. Here, you can explore restaurants, manage your orders in the cart, and more.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contributing
 
-### Code Splitting
+Contributions are welcome! Please follow this workflow for contributions:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. Fork the repository.
+2. Create a new branch for your feature (`git checkout -b feature/AmazingFeature`).
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the branch (`git push origin feature/AmazingFeature`).
+5. Open a pull request.
 
-### Analyzing the Bundle Size
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# Food-Ordering-web-app
+This project is open source and available under the [MIT License](LICENSE.md).
